@@ -193,40 +193,31 @@ export default function App() {
       <section id="hero" className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 overflow-hidden z-10">
         <Reveal className="max-w-5xl relative">
           <div className="absolute -left-8 md:-left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-accent/50 to-transparent" />
-          <div className="font-mono text-xs text-accent tracking-[0.3em] uppercase mb-6">Systems / Architecture / AI</div>
           <h1 className="text-5xl md:text-[6rem] font-light tracking-tight text-white mb-8 leading-[1.1]">
             Leandro Manuel<br />Zulaybar
           </h1>
           <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 mb-12">
-            <h2 className="text-xl md:text-2xl font-mono text-accent bg-accent/10 px-4 py-2 border border-accent/20 inline-block">
-              Engineering Leader
+            <h2 className="text-lg md:text-xl font-mono text-accent bg-accent/10 px-4 py-2 border border-accent/20 inline-block">
+              Engineering Leader — AI Systems, Distributed Architecture & Reliable Infrastructure
             </h2>
-            <div className="hidden md:block w-16 h-[1px] bg-white/20" />
-            <p className="text-xs md:text-sm font-mono text-gray-400 tracking-[0.2em] uppercase flex flex-wrap gap-4">
-              <span>AI Systems</span>
-              <span className="text-accent/50">•</span>
-              <span>Architecture</span>
-              <span className="text-accent/50">•</span>
-              <span>Reliability</span>
-            </p>
           </div>
           
           <div className="flex flex-wrap gap-8 font-mono text-xs tracking-[0.15em] uppercase">
-            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
-              Resume
+              <span className="smooth-underline">Resume</span>
             </a>
-            <a href="mailto:hello@example.com" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+            <a href="mailto:hello@example.com" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
-              Email
+              <span className="smooth-underline">Email</span>
             </a>
-            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
-              LinkedIn
+              <span className="smooth-underline">LinkedIn</span>
             </a>
-            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
-              GitHub
+              <span className="smooth-underline">GitHub</span>
             </a>
           </div>
         </Reveal>
@@ -241,7 +232,7 @@ export default function App() {
       <section className="relative py-24 px-8 md:px-24 z-10 border-t border-white/5">
         <Reveal className="max-w-4xl">
           <div className="text-2xl md:text-4xl leading-snug text-gray-400 font-light mb-8">
-            I operate at the intersection of <span className="text-white font-normal">architecture</span>, <span className="text-white font-normal">production AI</span>, <span className="text-white font-normal">infrastructure reliability</span>, and <span className="text-white font-normal">engineering execution</span>.
+            I operate across <span className="text-white font-normal">architecture</span>, <span className="text-white font-normal">production AI</span>, <span className="text-white font-normal">infrastructure reliability</span>, and <span className="text-white font-normal">engineering execution</span>.
           </div>
           <div className="text-base md:text-lg leading-relaxed text-gray-500 max-w-3xl">
             Over 14+ years, I’ve designed distributed backend systems, integrated production RAG and LLM workflows, standardized Kubernetes and CI/CD pipelines, and led teams of up to <span className="text-gray-300">19 engineers</span> delivering enterprise platforms at scale.
@@ -258,16 +249,20 @@ export default function App() {
               <h3 className="text-xs font-mono text-accent tracking-[0.2em]">SECTION 01</h3>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-white/90 mb-8">Systems Architecture</h2>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-              Designing scalable distributed systems across BioTech, Telco, and SaaS.
+            <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-8">Systems Architecture</h2>
+            <p className="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl">
+              Designing scalable, resilient distributed systems that accelerate product delivery across BioTech, Telco, and SaaS domains.
             </p>
-            <ul className="space-y-4 font-mono text-sm text-gray-500 mb-12">
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Microservices</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> API-first design (REST & GraphQL)</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Domain-driven modeling</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Backend platforms built in FastAPI and Django</li>
-            </ul>
+            <div className="space-y-8 mb-12 reveal-stagger">
+              <div>
+                <h4 className="text-white font-medium mb-2">Domain-Driven Microservices</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">Architected decoupled service boundaries using API-first design principles (REST & GraphQL), enabling independent team execution and scaling.</p>
+              </div>
+              <div>
+                <h4 className="text-white font-medium mb-2">High-Performance Backend Platforms</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">Engineered robust core platforms leveraging FastAPI and Django to process high-volume transactional data with minimal latency.</p>
+              </div>
+            </div>
             <div className="p-6 border border-accent/20 bg-accent/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-accent/50 group-hover:bg-accent transition-colors duration-500" />
               <p className="text-sm text-gray-300 relative z-10">
@@ -291,22 +286,25 @@ export default function App() {
               <h3 className="text-xs font-mono text-accent tracking-[0.2em]">SECTION 02</h3>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-white/90 mb-8">Production AI</h2>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-              AI systems embedded into real platforms — not isolated demos.
+            <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-8">Production AI</h2>
+            <p className="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl">
+              Embedding intelligence into core platforms through reliable, observable AI architectures—moving beyond isolated prototypes.
             </p>
-            <ul className="space-y-4 font-mono text-sm text-gray-500 mb-12">
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Production RAG architectures</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> MCP workflows</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> LLM + tool orchestration</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Vector search using Qdrant</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> LangChain & Vertex AI integrations</li>
-            </ul>
+            <div className="space-y-8 mb-12 reveal-stagger">
+              <div>
+                <h4 className="text-white font-medium mb-2">Enterprise RAG & Vector Search</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">Integrated production Retrieval-Augmented Generation workflows and Qdrant vector databases to unlock proprietary enterprise knowledge.</p>
+              </div>
+              <div>
+                <h4 className="text-white font-medium mb-2">LLM Orchestration & Tool Calling</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">Designed MCP workflows and LangChain/Vertex AI integrations that connect language models directly to internal APIs and execution environments.</p>
+              </div>
+            </div>
             <div className="p-6 border border-accent/20 bg-accent/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-accent/50 group-hover:bg-accent transition-colors duration-500" />
               <p className="text-sm text-gray-300 relative z-10">
                 <span className="text-accent font-mono mr-3 text-xs tracking-[0.15em]">IMPACT //</span>
-                Implemented AI workflows integrated across internal enterprise systems.
+                Successfully deployed AI workflows that actively process enterprise data in production environments.
               </p>
             </div>
           </Reveal>
@@ -325,20 +323,25 @@ export default function App() {
               <h3 className="text-xs font-mono text-accent tracking-[0.2em]">SECTION 03</h3>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-white/90 mb-8">Infrastructure & Reliability</h2>
-            <ul className="space-y-4 font-mono text-sm text-gray-500 mb-12">
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> AWS & GCP cloud architecture</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Docker & Kubernetes standardization</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> CI/CD automation</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Observability & monitoring</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> SLA/SLO ownership</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Incident response leadership</li>
-            </ul>
+            <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-8">Infrastructure & Reliability</h2>
+            <p className="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl">
+              Establishing the foundation for high-velocity engineering through automated pipelines, cloud governance, and strict observability.
+            </p>
+            <div className="space-y-8 mb-12 reveal-stagger">
+              <div>
+                <h4 className="text-white font-medium mb-2">Cloud Architecture & Containerization</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">Standardized AWS and GCP deployments using Docker and Kubernetes, ensuring consistent environments from local development to production.</p>
+              </div>
+              <div>
+                <h4 className="text-white font-medium mb-2">Observability & Incident Response</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">Implemented comprehensive monitoring and SLA/SLO frameworks to proactively detect anomalies and lead rapid incident resolution.</p>
+              </div>
+            </div>
             <div className="p-6 border border-accent/20 bg-accent/[0.02] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-1 h-full bg-accent/50 group-hover:bg-accent transition-colors duration-500" />
               <p className="text-sm text-gray-300 relative z-10">
                 <span className="text-accent font-mono mr-3 text-xs tracking-[0.15em]">IMPACT //</span>
-                Improved delivery reliability by <span className="text-white">25%</span>.
+                Standardized Kubernetes architecture and CI/CD pipelines to improve delivery reliability by <span className="text-white">25%</span>.
               </p>
             </div>
           </Reveal>
@@ -357,33 +360,35 @@ export default function App() {
               <h3 className="text-xs font-mono text-accent tracking-[0.2em]">SECTION 04</h3>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-white/90 mb-8">Engineering Leadership</h2>
-            <p className="text-lg text-gray-400 mb-16">Execution discipline at scale.</p>
+            <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-8">Engineering Leadership</h2>
+            <p className="text-lg md:text-xl text-gray-400 mb-16 max-w-2xl leading-relaxed">
+              Driving execution discipline at scale by aligning technical strategy with business objectives and cultivating high-performing teams.
+            </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
               <div className="border-t border-white/10 pt-6">
-                <div className="text-4xl font-light text-white mb-3">19</div>
-                <div className="text-sm font-mono text-gray-500">Engineers Led (5 Leads, 14 Staff)</div>
+                <div className="text-4xl md:text-5xl font-light text-white mb-3">19</div>
+                <div className="text-sm font-mono text-gray-500">Engineers Led<br/><span className="text-xs opacity-70">(5 Leads, 14 Staff)</span></div>
               </div>
               <div className="border-t border-white/10 pt-6">
-                <div className="text-4xl font-light text-white mb-3">15%</div>
-                <div className="text-sm font-mono text-gray-500">Reduced Turnover</div>
+                <div className="text-4xl md:text-5xl font-light text-white mb-3">15%</div>
+                <div className="text-sm font-mono text-gray-500">Reduced<br/>Turnover</div>
               </div>
               <div className="border-t border-white/10 pt-6">
-                <div className="text-4xl font-light text-white mb-3">6</div>
-                <div className="text-sm font-mono text-gray-500">Major Initiatives Delivered</div>
+                <div className="text-4xl md:text-5xl font-light text-white mb-3">6</div>
+                <div className="text-sm font-mono text-gray-500">Major Initiatives<br/>Delivered</div>
               </div>
             </div>
             
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-sm text-gray-500">
-              <ul className="space-y-4">
-                <li className="flex items-center gap-4"><span className="w-4 h-[1px] bg-accent/50" /> Hiring & mentorship</li>
-                <li className="flex items-center gap-4"><span className="w-4 h-[1px] bg-accent/50" /> Performance reviews</li>
-              </ul>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-4"><span className="w-4 h-[1px] bg-accent/50" /> Agile/Scrum delivery</li>
-                <li className="flex items-center gap-4"><span className="w-4 h-[1px] bg-accent/50" /> Roadmap ownership & Cross-team alignment</li>
-              </ul>
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 text-sm text-gray-500 reveal-stagger">
+              <div>
+                <h4 className="text-white font-medium mb-3 text-base">Team Building</h4>
+                <p className="leading-relaxed">Owned hiring pipelines, structured performance reviews, and established mentorship programs to elevate engineering standards.</p>
+              </div>
+              <div>
+                <h4 className="text-white font-medium mb-3 text-base">Delivery Operations</h4>
+                <p className="leading-relaxed">Managed Agile/Scrum processes, roadmap execution, and cross-functional alignment to ensure predictable, high-quality releases.</p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -398,20 +403,20 @@ export default function App() {
               <h3 className="text-xs font-mono text-accent tracking-[0.2em]">SECTION 05</h3>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-white/90 mb-8">Hands-On Development</h2>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-              Leadership without distance from the code.
+            <h2 className="text-3xl md:text-5xl font-light text-white/90 mb-8">Hands-On Development</h2>
+            <p className="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl">
+              Maintaining deep technical context to make informed architectural decisions. Leadership without distance from the code.
             </p>
-            <ul className="space-y-4 font-mono text-sm text-gray-500">
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Backend development in Python (FastAPI, Django, DRF)</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> GraphQL schema design</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> React & Next.js frontend work</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Database design (PostgreSQL, MongoDB, MySQL)</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Vector databases (Qdrant)</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> LLM integration & tool calling</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> CI/CD pipeline authoring</li>
-              <li className="flex items-center gap-4 hover:text-gray-300 transition-colors"><span className="w-4 h-[1px] bg-accent/50" /> Production debugging & performance tuning</li>
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 font-mono text-sm text-gray-500 reveal-stagger">
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Backend logic in Python (FastAPI, Django)</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>GraphQL & REST schema design</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>React & Next.js frontend implementation</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Relational & NoSQL database modeling</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Vector database (Qdrant) querying</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>LLM integration & tool calling scripts</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>CI/CD pipeline authoring (GitHub Actions)</span></div>
+              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Production debugging & performance tuning</span></div>
+            </div>
           </Reveal>
           <Reveal>
             <BuildVisual />
@@ -423,85 +428,66 @@ export default function App() {
       <section className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10">
         <div className="max-w-6xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-16">Selected Systems</h2>
-            <div className="space-y-12">
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="text-2xl font-light text-white/90">Selected Systems</h2>
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+            </div>
+            <div className="space-y-4">
               {[
                 {
                   title: "Enterprise Healthcare AI Platform",
-                  desc: "Production RAG integration across internal knowledge systems.",
-                  role: "Solutions Architect",
-                  stack: "Python, Qdrant, FastAPI, React",
-                  impact: "Reduced manual search time by 40%."
+                  problem: "Medical staff spent excessive time manually searching through fragmented internal knowledge bases.",
+                  approach: "Architected a production RAG system integrating Qdrant vector search with existing healthcare data silos.",
+                  impact: "Reduced manual search time by 40%, directly improving patient response SLAs.",
+                  stack: "Python, Qdrant, FastAPI, React"
                 },
                 {
                   title: "National Education Management Platform",
-                  desc: "FastAPI + Next.js cloud-based backend architecture.",
-                  role: "Engineering Manager",
-                  stack: "FastAPI, Next.js, PostgreSQL, GCP",
-                  impact: "Scaled to support 500k+ concurrent users."
+                  problem: "Legacy infrastructure could not handle concurrent user spikes during enrollment periods.",
+                  approach: "Redesigned the backend using a decoupled FastAPI architecture deployed on scalable GCP infrastructure.",
+                  impact: "Successfully scaled to support 500k+ concurrent users with zero downtime.",
+                  stack: "FastAPI, Next.js, PostgreSQL, GCP"
                 },
                 {
                   title: "High-Volume LLM Orchestration Engine",
-                  desc: "Infrastructure scaling AI workloads in production.",
-                  role: "Lead Architect",
-                  stack: "Kubernetes, Vertex AI, Redis",
-                  impact: "Processed 1M+ daily inference requests reliably."
+                  problem: "Initial AI prototypes failed under production load due to inefficient resource management.",
+                  approach: "Built a robust orchestration layer on Kubernetes to queue, batch, and route inference requests to Vertex AI.",
+                  impact: "Processed 1M+ daily inference requests reliably while optimizing compute costs.",
+                  stack: "Kubernetes, Vertex AI, Redis"
                 },
                 {
-                  title: "Laboratory Management API System",
-                  desc: "GraphQL + FastAPI backend on GCP.",
-                  role: "Backend Lead",
-                  stack: "GraphQL, FastAPI, GCP",
-                  impact: "Standardized data access across 12 laboratory locations."
-                },
-                {
-                  title: "Bulk AI Processing Platform",
-                  desc: "Django + DRF enterprise-scale AI pipeline.",
-                  role: "Engineering Manager",
-                  stack: "Django, DRF, Celery, AWS",
-                  impact: "Automated processing of 50TB+ of unstructured data."
-                },
-                {
-                  title: "Cloud Architecture Standardization Initiative",
-                  desc: "Kubernetes, CI/CD, monitoring, cost governance.",
-                  role: "Head of Technology",
-                  stack: "Kubernetes, Terraform, Datadog",
-                  impact: "Reduced cloud spend by 20% while improving uptime."
-                },
-                {
-                  title: "Telecom Data Exchange Platform",
-                  desc: "Two-way communication system built with Python & Linux.",
-                  role: "Lead Developer",
-                  stack: "Python, Linux, RabbitMQ",
-                  impact: "Handled 5000+ messages per second with zero data loss."
-                },
-                {
-                  title: "High-Availability Messaging Services",
-                  desc: "SMS & IVR systems maintaining 99.9% uptime.",
-                  role: "Software Engineer",
-                  stack: "Node.js, Redis, AWS",
-                  impact: "Maintained 99.9% uptime during peak holiday traffic."
+                  title: "Cloud Architecture Standardization",
+                  problem: "Inconsistent deployment practices across teams led to high cloud costs and frequent outages.",
+                  approach: "Implemented strict Terraform governance, unified CI/CD pipelines, and centralized Datadog observability.",
+                  impact: "Reduced cloud spend by 20% while improving overall system uptime.",
+                  stack: "Kubernetes, Terraform, Datadog, AWS"
                 }
               ].map((sys, i) => (
-                <div key={i} className="group border-b border-white/10 pb-8 hover:border-accent/50 transition-all duration-500 relative interactive">
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 -mx-8 px-8" />
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
-                    <div className="md:col-span-2 flex gap-4 md:gap-6">
-                      <div className="font-mono text-xs text-white/20 mt-1.5 hidden sm:block">0{i + 1}</div>
-                      <div>
-                        <h4 className="text-xl text-white/90 mb-2 group-hover:text-accent transition-colors duration-300 flex items-center gap-3">
-                          {sys.title}
-                          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -translate-x-4 group-hover:translate-x-0">→</span>
-                        </h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">{sys.desc}</p>
+                <div key={i} className="group border-t border-white/10 pt-12 pb-12 hover:bg-white/[0.01] transition-all duration-500 relative interactive -mx-8 px-8">
+                  <div className="absolute left-0 top-0 w-[2px] h-0 bg-accent group-hover:h-full transition-all duration-500" />
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+                    <div className="lg:col-span-4">
+                      <div className="font-mono text-xs text-accent tracking-[0.2em] mb-4">0{i + 1} // SYSTEM</div>
+                      <h4 className="text-2xl text-white/90 mb-4 group-hover:text-white transition-colors duration-300">
+                        {sys.title}
+                      </h4>
+                      <div className="font-mono text-xs text-gray-500 mt-auto pt-4 border-t border-white/5 inline-block">
+                        <span className="text-white/30 mr-2">STACK:</span> {sys.stack}
                       </div>
                     </div>
-                    <div className="font-mono text-xs text-gray-500 space-y-2">
-                      <div><span className="text-white/40">ROLE:</span> {sys.role}</div>
-                      <div><span className="text-white/40">STACK:</span> {sys.stack}</div>
-                    </div>
-                    <div className="font-mono text-xs text-accent">
-                      {sys.impact}
+                    <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <h5 className="text-sm font-medium text-white/70 mb-2">Problem</h5>
+                        <p className="text-gray-400 text-sm leading-relaxed">{sys.problem}</p>
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium text-white/70 mb-2">Approach</h5>
+                        <p className="text-gray-400 text-sm leading-relaxed">{sys.approach}</p>
+                      </div>
+                      <div className="md:col-span-2 p-4 bg-accent/[0.03] border border-accent/10 mt-2">
+                        <h5 className="text-xs font-mono text-accent tracking-[0.1em] mb-2 uppercase">Impact</h5>
+                        <p className="text-gray-300 text-sm">{sys.impact}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -561,23 +547,25 @@ export default function App() {
       <section className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10">
         <div className="max-w-6xl mx-auto">
           <Reveal>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="text-2xl font-light text-white/90">Technical Arsenal</h2>
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 reveal-stagger">
               {[
                 { category: "Backend", items: ["Python", "FastAPI", "Django", "DRF", "GraphQL"] },
-                { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
+                { category: "AI", items: ["LangChain", "Vertex AI", "MCP", "RAG"] },
                 { category: "Cloud & DevOps", items: ["AWS", "GCP", "Kubernetes", "Docker", "CI/CD"] },
-                { category: "AI / LLM", items: ["LangChain", "Vertex AI", "MCP", "RAG"] },
+                { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
                 { category: "Databases", items: ["PostgreSQL", "MongoDB", "Qdrant", "Redis"] }
               ].map((group, i) => (
                 <div key={i}>
-                  <h4 className="text-xs font-mono text-white mb-6 uppercase tracking-widest">{group.category}</h4>
-                  <div className="flex flex-wrap gap-2">
+                  <h4 className="text-xs font-mono text-white/50 mb-6 uppercase tracking-widest pb-4 border-b border-white/5">{group.category}</h4>
+                  <ul className="space-y-3 text-sm font-mono text-gray-400">
                     {group.items.map((item, j) => (
-                      <span key={j} className="px-3 py-1.5 text-[11px] font-mono text-gray-400 border border-white/10 rounded-full hover:border-accent/50 hover:text-accent hover:bg-accent/5 transition-all cursor-default">
-                        {item}
-                      </span>
+                      <li key={j} className="hover:text-white transition-colors cursor-default">{item}</li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               ))}
             </div>
