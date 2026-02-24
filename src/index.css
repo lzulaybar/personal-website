@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0B0F14;
+  --color-accent: #5C80A6;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: #E2E8F0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (pointer: fine) and (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+  a, button, .interactive {
+    cursor: none;
+  }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(92, 128, 166, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.cursor-hover .cursor-dot {
+  width: 0;
+  height: 0;
+}
+
+.cursor-hover .cursor-outline {
+  width: 60px;
+  height: 60px;
+  border-color: var(--color-accent);
+  background-color: rgba(92, 128, 166, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+/* Grid texture */
+.bg-grid {
+  background-size: 60px 60px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+/* Oversized faint text */
+.oversized-label {
+  position: absolute;
+  font-size: 18vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.8;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Abstract visuals */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.layer-plane {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotateX(60deg) rotateZ(45deg);
+}
+
+.layer-container:hover .layer-plane:nth-child(1) { transform: rotateX(60deg) rotateZ(45deg) translateZ(30px); }
+.layer-container:hover .layer-plane:nth-child(2) { transform: rotateX(60deg) rotateZ(45deg) translateZ(0px); }
+.layer-container:hover .layer-plane:nth-child(3) { transform: rotateX(60deg) rotateZ(45deg) translateZ(-30px); }
+
+@keyframes pulse-node {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+.node-pulse {
+  animation: pulse-node 4s infinite ease-in-out;
+}
+
+@keyframes drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+.grid-drift {
+  animation: drift 15s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.1); }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.25;
+  animation: float 8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.glow-orb-1 {
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: var(--color-accent);
+  top: -20%;
+  right: -10%;
+  animation-delay: 0s;
+}
+
+.glow-orb-2 {
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: #1e3a5f;
+  bottom: 10%;
+  left: -10%;
+  animation-delay: -5s;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
