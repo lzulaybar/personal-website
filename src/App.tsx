@@ -206,19 +206,19 @@ export default function App() {
           </p>
           
           <div className="flex flex-wrap gap-8 font-mono text-xs tracking-[0.15em] uppercase">
-            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
+            <a href="https://drive.google.com/file/d/1l_RwHayHuwvLvjz5FcC493Jup1lUfemg/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
               <span className="smooth-underline">Resume</span>
             </a>
-            <a href="mailto:hello@example.com" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
+            <a href="mailto:leandro.zulaybar@gmail.com" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
               <span className="smooth-underline">Email</span>
             </a>
-            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
+            <a href="https://www.linkedin.com/in/anjo-zulaybar/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
               <span className="smooth-underline">LinkedIn</span>
             </a>
-            <a href="#" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
+            <a href="https://github.com/lzulaybar" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
               <span className="smooth-underline">GitHub</span>
             </a>
