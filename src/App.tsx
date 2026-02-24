@@ -17,53 +17,6 @@ function useReveal() {
   return ref;
 }
 
-const CustomCursor = () => {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const outlineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
-      if (dotRef.current && outlineRef.current) {
-        dotRef.current.style.left = `${e.clientX}px`;
-        dotRef.current.style.top = `${e.clientY}px`;
-        
-        outlineRef.current.animate({
-          left: `${e.clientX}px`,
-          top: `${e.clientY}px`
-        }, { duration: 500, fill: 'forwards' });
-      }
-    };
-
-    const onMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName.toLowerCase() === 'a' || target.closest('a') || target.tagName.toLowerCase() === 'button' || target.closest('button') || target.classList.contains('interactive')) {
-        document.body.classList.add('cursor-hover');
-      } else {
-        document.body.classList.remove('cursor-hover');
-      }
-    };
-
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseover', onMouseOver);
-
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseover', onMouseOver);
-    };
-  }, []);
-
-  if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
-    return null;
-  }
-
-  return (
-    <>
-      <div ref={dotRef} className="cursor-dot hidden md:block" />
-      <div ref={outlineRef} className="cursor-outline hidden md:block" />
-    </>
-  );
-};
-
 const SideNav = () => {
   const sections = [
     { id: 'hero', label: 'Start' },
@@ -185,7 +138,6 @@ const BuildVisual = () => (
 export default function App() {
   return (
     <div className="min-h-screen bg-bg text-gray-300 font-sans selection:bg-accent/30 relative">
-      <CustomCursor />
       <SideNav />
       <BackgroundEffects />
       
@@ -193,18 +145,26 @@ export default function App() {
       <section id="hero" className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 overflow-hidden z-10">
         <Reveal className="max-w-5xl relative">
           <div className="absolute -left-8 md:-left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-accent/50 to-transparent" />
-          <h1 className="text-5xl md:text-[6rem] font-light tracking-tight text-white mb-8 leading-[1.1]">
-            Leandro Manuel<br />Zulaybar
+          <h1 className="text-5xl md:text-[5.5rem] font-light tracking-tight text-white mb-8 leading-[1.1]">
+            Engineering Leader.<br />AI & Distributed Platforms.
           </h1>
           <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 mb-8">
             <h2 className="text-lg md:text-xl font-mono text-accent bg-accent/10 px-4 py-2 border border-accent/20 inline-block">
-              Engineering Leader — AI Platforms, Distributed Systems & Reliable Infrastructure
+              Leandro Manuel Zulaybar — Staff+ / Engineering Manager
             </h2>
           </div>
           <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl leading-relaxed">
-            I design and operate production AI platforms, architect distributed systems, and lead engineering teams that deliver reliable software at scale.
+            I architect production AI systems, scale distributed platforms, and build engineering organizations that deliver reliable software.
           </p>
           
+          <div className="flex flex-wrap gap-6 font-mono text-xs tracking-[0.15em] uppercase mb-12">
+            <a href="#systems" className="px-6 py-3 bg-white text-bg hover:bg-gray-200 transition-colors interactive">
+              View Architecture
+            </a>
+            <a href="#contact" className="px-6 py-3 border border-white/20 text-white hover:bg-white/5 transition-colors interactive">
+              Let's Talk Scale
+            </a>
+          </div>
           <div className="flex flex-wrap gap-8 font-mono text-xs tracking-[0.15em] uppercase">
             <a href="https://drive.google.com/file/d/1l_RwHayHuwvLvjz5FcC493Jup1lUfemg/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors interactive">
               <span className="w-6 h-[1px] bg-white/20 group-hover:bg-accent transition-colors" />
@@ -231,16 +191,42 @@ export default function App() {
         </div>
       </section>
 
-      {/* Intro Statement */}
+      {/* Executive Summary */}
       <section className="relative py-24 px-8 md:px-24 z-10 border-t border-white/5">
         <Reveal className="max-w-4xl">
           <div className="text-2xl md:text-4xl leading-snug text-gray-300 font-light mb-8">
-            I operate at the intersection of architectural authority, production AI, and operational excellence.
+            I architect scalable systems and lead engineering teams that deliver reliably under pressure.
           </div>
           <div className="text-base md:text-lg leading-relaxed text-gray-500 max-w-3xl">
-            Over 14+ years, I’ve set architectural direction, deployed production RAG and orchestration systems, enforced cloud governance, and scaled engineering organizations delivering enterprise platforms under strict SLA discipline.
+            Over 14+ years, I’ve transitioned from building high-availability messaging systems to leading engineering organizations of up to 19 engineers. My focus is on designing distributed platforms that handle massive scale, integrating production-ready AI workflows, and cultivating engineering cultures obsessed with reliability and execution.
           </div>
         </Reveal>
+      </section>
+
+      {/* Where I Add Leverage */}
+      <section className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10 bg-white/[0.02]">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="text-2xl font-light text-white">Where I Add Leverage</h2>
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 reveal-stagger">
+              <div>
+                <h3 className="text-xl text-white mb-4">Series B–C Scaling</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Transitioning from MVP architecture to robust, distributed platforms capable of handling enterprise load and strict compliance requirements.</p>
+              </div>
+              <div>
+                <h3 className="text-xl text-white mb-4">AI Transformation</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Moving beyond LLM prototypes to deploying secure, observable, and cost-efficient production AI systems integrated into core business workflows.</p>
+              </div>
+              <div>
+                <h3 className="text-xl text-white mb-4">Engineering Turnarounds</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Standardizing CI/CD, enforcing cloud governance, and rebuilding engineering culture around reliability, velocity, and SLA discipline.</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* 01 Architecture */}
@@ -256,7 +242,6 @@ export default function App() {
             <p className="text-lg md:text-xl text-gray-400 mb-6 leading-relaxed max-w-2xl">
               Establishing architectural direction, defining system boundaries, and enforcing API governance to ensure long-term scalability.
             </p>
-            <p className="font-mono text-xs text-accent tracking-[0.15em] uppercase mb-12">Strong architecture reduces ambiguity and compounds over time.</p>
             <div className="space-y-8 mb-12 reveal-stagger">
               <div>
                 <h4 className="text-white font-medium mb-2 text-lg">Domain Modeling & Service Boundaries</h4>
@@ -294,7 +279,6 @@ export default function App() {
             <p className="text-lg md:text-xl text-gray-400 mb-6 leading-relaxed max-w-2xl">
               Designing and operating production-grade RAG systems and orchestration layers under load, enforcing observability and cost discipline.
             </p>
-            <p className="font-mono text-xs text-accent tracking-[0.15em] uppercase mb-12">AI systems without observability create operational risk.</p>
             <div className="space-y-8 mb-12 reveal-stagger">
               <div>
                 <h4 className="text-white font-medium mb-2 text-lg">Enterprise RAG & Vector Infrastructure</h4>
@@ -332,7 +316,6 @@ export default function App() {
             <p className="text-lg md:text-xl text-gray-400 mb-6 leading-relaxed max-w-2xl">
               Owning 99.9% uptime through cloud governance, Kubernetes standardization, and SLA/SLO discipline.
             </p>
-            <p className="font-mono text-xs text-accent tracking-[0.15em] uppercase mb-12">Reliability is a strategic advantage.</p>
             <div className="space-y-8 mb-12 reveal-stagger">
               <div>
                 <h4 className="text-white font-medium mb-2 text-lg">Cloud Governance & Platform Standardization</h4>
@@ -370,10 +353,9 @@ export default function App() {
             <p className="text-lg md:text-xl text-gray-400 mb-4 max-w-2xl leading-relaxed">
               Scaling teams, owning roadmaps, and driving cross-functional alignment to deliver organizational impact.
             </p>
-            <p className="text-md text-gray-300 mb-6 max-w-2xl leading-relaxed">
+            <p className="text-md text-gray-300 mb-16 max-w-2xl leading-relaxed">
               Accountable for architectural integrity, AI platform evolution, and engineering execution across product lines.
             </p>
-            <p className="font-mono text-xs text-accent tracking-[0.15em] uppercase mb-16">Ownership of technical direction and alignment with business strategy.</p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
               <div className="border-t border-white/10 pt-6">
@@ -404,77 +386,47 @@ export default function App() {
         </div>
       </section>
 
-      {/* 05 Hands-On Development */}
-      <section id="build" className="relative py-32 px-8 md:px-24 overflow-hidden border-t border-white/5 z-10">
-        <div className="oversized-label">BUILD</div>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <Reveal>
-            <div className="flex items-center gap-4 mb-6">
-              <h3 className="text-xs font-mono text-accent tracking-[0.2em]">SECTION 05</h3>
-              <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-8">Hands-On Credibility</h2>
-            <p className="text-lg md:text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl">
-              Continued direct technical involvement in backend systems, AI integration, infrastructure automation, and debugging.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 font-mono text-sm text-gray-500 reveal-stagger">
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Production backend systems in Python (FastAPI, Django)</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>GraphQL & REST schema design</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>React & Next.js frontend implementation</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Relational & NoSQL database modeling</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Vector database (Qdrant) querying</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>LLM integration & orchestration pipelines</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>CI/CD pipeline architecture & automation</span></div>
-              <div className="flex items-start gap-4 group"><span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> <span>Production debugging & performance tuning</span></div>
-            </div>
-          </Reveal>
-          <Reveal>
-            <BuildVisual />
-          </Reveal>
-        </div>
-      </section>
+
 
       {/* Selected Systems */}
-      <section className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10">
+      <section id="systems" className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="flex items-center gap-4 mb-16">
-              <h2 className="text-2xl font-light text-white">Selected Systems</h2>
+              <h2 className="text-2xl font-light text-white">Architectural Case Studies</h2>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
             </div>
             <div className="space-y-4">
               {[
                 {
                   title: "Enterprise Healthcare AI Platform",
-                  problem: "Medical staff spent excessive time manually searching through fragmented internal knowledge bases.",
-                  approach: "Architected a production RAG system integrating Qdrant vector search with existing healthcare data silos, enforcing strict access controls.",
-                  outcome: "Deployed a unified intelligence layer processing thousands of queries daily.",
-                  impact: "Reduced manual search time by 40%, directly improving patient response SLAs.",
+                  problem: "Medical staff spent excessive time manually searching through fragmented internal knowledge bases, delaying patient care.",
+                  constraints: "Strict HIPAA compliance, zero-downtime deployment, and integration with legacy on-premise data silos.",
+                  architecture: "Production RAG system integrating Qdrant vector search with FastAPI microservices and a React frontend.",
+                  decisions: "Chose Qdrant over cloud-native alternatives for on-premise deployment capabilities to satisfy compliance. Implemented strict role-based access controls at the vector level.",
+                  results: "Reduced manual search time by 40%, directly improving patient response SLAs. Processed 10k+ queries daily.",
+                  lessons: "Early investment in embedding quality drove the highest ROI.",
                   stack: "Python, Qdrant, FastAPI, React"
-                },
-                {
-                  title: "National Education Management Platform",
-                  problem: "Legacy infrastructure could not handle concurrent user spikes during enrollment periods.",
-                  approach: "Redesigned the backend using a decoupled FastAPI architecture deployed on scalable GCP infrastructure with read-replicas.",
-                  outcome: "Migrated 100% of traffic to the new platform with zero data loss.",
-                  impact: "Successfully scaled to support 500k+ concurrent users with zero downtime.",
-                  stack: "FastAPI, Next.js, PostgreSQL, GCP"
                 },
                 {
                   title: "High-Volume LLM Orchestration Engine",
                   problem: "Initial AI prototypes failed under production load due to inefficient resource management and API rate limits.",
-                  approach: "Built a robust orchestration layer on Kubernetes to queue, batch, and route inference requests to Vertex AI with fallback mechanisms.",
-                  outcome: "Stabilized AI inference infrastructure across the organization.",
-                  impact: "Processed 1M+ daily inference requests reliably while optimizing compute costs by 15%.",
-                  stack: "Kubernetes, Vertex AI, Redis"
+                  constraints: "Strict cost controls, high throughput requirements, and unpredictable burst traffic.",
+                  architecture: "Built a robust orchestration layer on Kubernetes to queue, batch, and route inference requests to Vertex AI with fallback mechanisms.",
+                  decisions: "Implemented a Redis-backed priority queue to manage rate limits and ensure critical requests bypassed batching delays.",
+                  results: "Stabilized AI inference infrastructure, processing 1M+ daily requests reliably while optimizing compute costs by 15%.",
+                  lessons: "Token-level observability is mandatory for managing production LLM costs.",
+                  stack: "Kubernetes, Vertex AI, Redis, Python"
                 },
                 {
-                  title: "Cloud Architecture Standardization",
-                  problem: "Inconsistent deployment practices across teams led to high cloud costs and frequent outages.",
-                  approach: "Implemented strict Terraform governance, unified CI/CD pipelines, and centralized Datadog observability across all engineering pods.",
-                  outcome: "Established a paved-road platform for all future service deployments.",
-                  impact: "Reduced cloud spend by 20% while improving overall system uptime to 99.9%.",
-                  stack: "Kubernetes, Terraform, Datadog, AWS"
+                  title: "National Education Management Platform",
+                  problem: "Legacy infrastructure could not handle concurrent user spikes during enrollment periods, causing system crashes.",
+                  constraints: "Zero data loss requirement, tight migration window, and strict budget limits.",
+                  architecture: "Redesigned the backend using a decoupled FastAPI architecture deployed on scalable GCP infrastructure with read-replicas.",
+                  decisions: "Separated read and write workloads at the database layer to handle the 90/10 read/write split during enrollment spikes.",
+                  results: "Migrated 100% of traffic with zero data loss. Successfully scaled to support 500k+ concurrent users with zero downtime.",
+                  lessons: "Database read-replicas and connection pooling resolved burst scaling more effectively than application-level changes.",
+                  stack: "FastAPI, Next.js, PostgreSQL, GCP"
                 }
               ].map((sys, i) => (
                 <div key={i} className="group border-t border-white/10 pt-12 pb-12 hover:bg-white/[0.01] transition-all duration-500 relative interactive -mx-8 px-8">
@@ -495,18 +447,23 @@ export default function App() {
                         <p className="text-gray-400 text-sm leading-relaxed">{sys.problem}</p>
                       </div>
                       <div>
-                        <h5 className="text-sm font-medium text-white mb-2">Strategic Approach</h5>
-                        <p className="text-gray-400 text-sm leading-relaxed">{sys.approach}</p>
+                        <h5 className="text-sm font-medium text-white mb-2">Constraints</h5>
+                        <p className="text-gray-400 text-sm leading-relaxed">{sys.constraints}</p>
+                      </div>
+                      <div className="md:col-span-2 border-t border-white/5 pt-6 mt-2">
+                        <h5 className="text-sm font-medium text-white mb-2">Architecture & Decisions</h5>
+                        <p className="text-gray-400 text-sm leading-relaxed mb-4">{sys.architecture}</p>
+                        <p className="text-gray-400 text-sm leading-relaxed">{sys.decisions}</p>
                       </div>
                       <div className="md:col-span-2 p-5 bg-accent/[0.03] border border-accent/10 mt-2">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
-                            <h5 className="text-xs font-mono text-accent tracking-[0.1em] mb-2 uppercase">Outcome</h5>
-                            <p className="text-gray-400 text-sm">{sys.outcome}</p>
+                            <h5 className="text-xs font-mono text-accent tracking-[0.1em] mb-2 uppercase">Results</h5>
+                            <p className="text-white font-medium text-sm">{sys.results}</p>
                           </div>
                           <div>
-                            <h5 className="text-xs font-mono text-accent tracking-[0.1em] mb-2 uppercase">Operational Impact</h5>
-                            <p className="text-white font-medium text-base">{sys.impact}</p>
+                            <h5 className="text-xs font-mono text-accent tracking-[0.1em] mb-2 uppercase">Lessons Learned</h5>
+                            <p className="text-gray-400 text-sm">{sys.lessons}</p>
                           </div>
                         </div>
                       </div>
@@ -565,31 +522,48 @@ export default function App() {
         </div>
       </section>
 
-      {/* Stack */}
+      {/* Architectural Patterns */}
       <section className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="flex items-center gap-4 mb-16">
-              <h2 className="text-2xl font-light text-white">Technical Arsenal</h2>
+              <h2 className="text-2xl font-light text-white">Architectural & Platform Patterns</h2>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent" />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 reveal-stagger">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 reveal-stagger">
               {[
-                { category: "Backend", items: ["Python", "FastAPI", "Django", "DRF", "GraphQL"] },
-                { category: "AI", items: ["LangChain", "Vertex AI", "MCP", "RAG"] },
-                { category: "Cloud & DevOps", items: ["AWS", "GCP", "Kubernetes", "Docker", "CI/CD"] },
-                { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
-                { category: "Databases", items: ["PostgreSQL", "MongoDB", "Qdrant", "Redis"] }
-              ].map((group, i) => (
-                <div key={i}>
-                  <h4 className="text-xs font-mono text-white/50 mb-6 uppercase tracking-widest pb-4 border-b border-white/5">{group.category}</h4>
-                  <ul className="space-y-3 text-sm font-mono text-gray-400">
-                    {group.items.map((item, j) => (
-                      <li key={j} className="hover:text-white transition-colors cursor-default">{item}</li>
-                    ))}
-                  </ul>
+                "API-First Governance & Service Boundaries",
+                "LLM Orchestration & Tool Calling Pipelines",
+                "Vector Search Infrastructure & RAG",
+                "CI/CD Standardization & Deployment Automation",
+                "Incident Response Loops & SLO Enforcement",
+                "Engineering Hiring & Team Topologies"
+              ].map((pattern, i) => (
+                <div key={i} className="flex items-start gap-4 group">
+                  <span className="w-4 h-[1px] bg-accent/50 mt-2 group-hover:w-6 transition-all" /> 
+                  <span className="text-sm font-mono text-gray-400 group-hover:text-white transition-colors">{pattern}</span>
                 </div>
               ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="relative py-32 px-8 md:px-24 border-t border-white/5 z-10 text-center">
+        <div className="max-w-3xl mx-auto">
+          <Reveal>
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-6">Ready to scale your platform?</h2>
+            <p className="text-lg text-gray-400 mb-12">
+              Let's talk about architecture, AI integration, and engineering leadership.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a href="mailto:leandro.zulaybar@gmail.com" className="px-8 py-4 bg-white text-bg hover:bg-gray-200 transition-colors font-mono text-sm tracking-widest uppercase interactive w-full sm:w-auto">
+                Email Me
+              </a>
+              <a href="https://www.linkedin.com/in/anjo-zulaybar/" target="_blank" rel="noopener noreferrer" className="px-8 py-4 border border-white/20 text-white hover:bg-white/5 transition-colors font-mono text-sm tracking-widest uppercase interactive w-full sm:w-auto">
+                Connect on LinkedIn
+              </a>
             </div>
           </Reveal>
         </div>
