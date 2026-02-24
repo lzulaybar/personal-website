@@ -23,8 +23,8 @@ body {
 /* Grid texture */
 .bg-grid {
   background-size: 60px 60px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
@@ -52,6 +52,7 @@ body {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.active {
@@ -63,6 +64,7 @@ body {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.active .reveal-stagger > * {
@@ -110,6 +112,7 @@ body {
 .layer-plane {
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   transform: rotateX(60deg) rotateZ(45deg);
+  will-change: transform;
 }
 
 .layer-container:hover .layer-plane:nth-child(1) { transform: rotateX(60deg) rotateZ(45deg) translateZ(30px); }
@@ -144,6 +147,7 @@ body {
   opacity: 0.25;
   animation: float 8s infinite ease-in-out;
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .glow-orb-1 {
@@ -157,17 +161,6 @@ body {
   animation-delay: 0s;
 }
 
-.glow-orb-2 {
-  width: 50vw;
-  height: 50vw;
-  max-width: 600px;
-  max-height: 600px;
-  background: #1e3a5f;
-  bottom: 10%;
-  left: -10%;
-  animation-delay: -5s;
-}
-
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -175,4 +168,27 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 40s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .reveal {
+    transition-duration: 0.7s;
+    transform: translateY(16px);
+  }
+  .reveal-stagger > * {
+    transition-duration: 0.5s;
+    transform: translateY(8px);
+  }
+  .glow-orb, .animate-spin-slow, .grid-drift, .node-pulse {
+    animation: none !important;
+    transform: none !important;
+  }
+  .layer-plane {
+    transition: none;
+  }
+  .bg-grid {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
 }

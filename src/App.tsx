@@ -7,6 +7,7 @@ function useReveal() {
       ([entry]) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
       },
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
@@ -72,25 +73,21 @@ const Reveal = ({ children, className = '' }: { children: React.ReactNode, class
 };
 
 const BackgroundEffects = () => (
-  <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-    <div className="absolute inset-0 bg-grid grid-drift opacity-[0.08]" />
+  <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" style={{ contain: 'strict' }}>
+    <div className="absolute inset-0 bg-grid grid-drift opacity-[0.04]" />
     <div className="glow-orb glow-orb-1" />
-    <div className="glow-orb glow-orb-2" />
     <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] border border-white/[0.05] rounded-full animate-spin-slow" style={{ transformOrigin: 'center' }}>
       <div className="absolute top-0 left-1/2 w-3 h-3 bg-accent/40 rounded-full -translate-x-1/2 -translate-y-1/2 shadow-[0_0_15px_rgba(92,128,166,0.5)]" />
-    </div>
-    <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] border border-white/[0.05] rounded-full animate-spin-slow" style={{ transformOrigin: 'center', animationDirection: 'reverse', animationDuration: '40s' }}>
-      <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-accent/40 rounded-full -translate-x-1/2 translate-y-1/2 shadow-[0_0_10px_rgba(92,128,166,0.5)]" />
     </div>
   </div>
 );
 
 // SVG Components for abstract visuals
 const ArchitectureVisual = () => (
-  <div className="layer-container relative w-full h-80 flex items-center justify-center perspective-1000">
-    <div className="absolute w-48 h-48 border border-white/20 layer-plane bg-bg/50 backdrop-blur-sm" style={{ transform: 'rotateX(60deg) rotateZ(45deg) translateZ(15px)' }} />
-    <div className="absolute w-48 h-48 border border-white/20 layer-plane bg-bg/50 backdrop-blur-sm" style={{ transform: 'rotateX(60deg) rotateZ(45deg) translateZ(0px)' }} />
-    <div className="absolute w-48 h-48 border border-white/20 layer-plane bg-bg/50 backdrop-blur-sm" style={{ transform: 'rotateX(60deg) rotateZ(45deg) translateZ(-15px)' }} />
+  <div className="layer-container relative w-full h-80 flex items-center justify-center perspective-1000" style={{ contain: 'layout paint' }}>
+    <div className="absolute w-48 h-48 border border-white/20 layer-plane bg-bg/90" style={{ transform: 'rotateX(60deg) rotateZ(45deg) translateZ(15px)' }} />
+    <div className="absolute w-48 h-48 border border-white/20 layer-plane bg-bg/90" style={{ transform: 'rotateX(60deg) rotateZ(45deg) translateZ(0px)' }} />
+    <div className="absolute w-48 h-48 border border-white/20 layer-plane bg-bg/90" style={{ transform: 'rotateX(60deg) rotateZ(45deg) translateZ(-15px)' }} />
     <div className="absolute w-full h-full flex flex-col items-center justify-center gap-12 pointer-events-none">
        <div className="w-1.5 h-1.5 bg-accent rounded-full" />
        <div className="w-1.5 h-1.5 bg-accent rounded-full" />
@@ -100,7 +97,7 @@ const ArchitectureVisual = () => (
 );
 
 const AIVisual = () => (
-  <div className="relative w-full h-80 flex items-center justify-center">
+  <div className="relative w-full h-80 flex items-center justify-center" style={{ contain: 'layout paint' }}>
     <div className="absolute w-32 h-32 border border-white/10 rounded-full" />
     <div className="absolute w-56 h-56 border border-white/5 rounded-full" />
     <div className="w-3 h-3 bg-accent rounded-full node-pulse" />
@@ -114,7 +111,7 @@ const AIVisual = () => (
 );
 
 const ReliabilityVisual = () => (
-  <div className="relative w-full h-80 flex flex-col items-center justify-center gap-6">
+  <div className="relative w-full h-80 flex flex-col items-center justify-center gap-6" style={{ contain: 'layout paint' }}>
     {[1, 2, 3, 4].map((i) => (
       <div key={i} className="w-56 h-8 border border-white/20 flex items-center px-4 transition-transform duration-700 hover:translate-x-4 bg-bg">
         <div className="w-2 h-2 bg-accent/50" />
@@ -122,16 +119,6 @@ const ReliabilityVisual = () => (
       </div>
     ))}
     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-48 bg-white/10 -z-10" />
-  </div>
-);
-
-const BuildVisual = () => (
-  <div className="relative w-full h-80 flex items-center justify-center">
-    <div className="grid grid-cols-4 gap-3">
-      {Array.from({ length: 16 }).map((_, i) => (
-        <div key={i} className={`w-10 h-10 border border-white/10 transition-colors duration-500 ${i % 5 === 0 ? 'bg-accent/20' : 'hover:bg-white/5'}`} />
-      ))}
-    </div>
   </div>
 );
 
@@ -399,34 +386,44 @@ export default function App() {
             <div className="space-y-4">
               {[
                 {
-                  title: "Enterprise Healthcare AI Platform",
-                  problem: "Medical staff spent excessive time manually searching through fragmented internal knowledge bases, delaying patient care.",
-                  constraints: "Strict HIPAA compliance, zero-downtime deployment, and integration with legacy on-premise data silos.",
-                  architecture: "Production RAG system integrating Qdrant vector search with FastAPI microservices and a React frontend.",
-                  decisions: "Chose Qdrant over cloud-native alternatives for on-premise deployment capabilities to satisfy compliance. Implemented strict role-based access controls at the vector level.",
-                  results: "Reduced manual search time by 40%, directly improving patient response SLAs. Processed 10k+ queries daily.",
-                  lessons: "Early investment in embedding quality drove the highest ROI.",
-                  stack: "Python, Qdrant, FastAPI, React"
+                  title: "Enterprise Cloud Infrastructure Consolidation & Governance",
+                  problem: "Infrastructure sprawl across multiple products resulted in oversized compute specs, abandoned projects, and an unoptimized GCP spend of ~$40,000/month.",
+                  constraints: "Required zero-downtime migration for active production services while untangling isolated Kubernetes clusters, databases, and fragmented CI/CD pipelines.",
+                  architecture: "Consolidated fragmented infrastructure into a single multi-tenant GKE cluster. Enforced logical isolation via Kubernetes namespaces, strict RBAC, and resource quotas.",
+                  decisions: "Decommissioned orphaned projects, consolidated databases, right-sized compute nodes, and standardized CI/CD deployment paths with automated scaling policies.",
+                  results: "Reduced monthly GCP expenditure from ~$40,000 to ~$8,000 (an 80% reduction). Improved system performance through optimized resource utilization and established deployment consistency across all teams.",
+                  lessons: "Infrastructure sprawl is an organizational anti-pattern; centralized governance with namespace-level isolation provides better security and cost control than physical cluster separation.",
+                  stack: "GCP, GKE, Kubernetes, Docker, CI/CD"
                 },
                 {
-                  title: "High-Volume LLM Orchestration Engine",
-                  problem: "Initial AI prototypes failed under production load due to inefficient resource management and API rate limits.",
-                  constraints: "Strict cost controls, high throughput requirements, and unpredictable burst traffic.",
-                  architecture: "Built a robust orchestration layer on Kubernetes to queue, batch, and route inference requests to Vertex AI with fallback mechanisms.",
-                  decisions: "Implemented a Redis-backed priority queue to manage rate limits and ensure critical requests bypassed batching delays.",
-                  results: "Stabilized AI inference infrastructure, processing 1M+ daily requests reliably while optimizing compute costs by 15%.",
-                  lessons: "Token-level observability is mandatory for managing production LLM costs.",
-                  stack: "Kubernetes, Vertex AI, Redis, Python"
+                  title: "Enterprise Medical AI Triage Platform",
+                  problem: "High volume of patient intake requests overwhelming clinical staff, leading to delayed triaging and response times.",
+                  constraints: "Strict HIPAA compliance, zero data retention in third-party LLM APIs, and high accuracy requirements.",
+                  architecture: "Deployed a localized RAG pipeline using Qdrant for vector search and an open-weight LLM fine-tuned for medical entity extraction. Built on FastAPI with strict role-based access control (RBAC).",
+                  decisions: "Chose localized inference over managed cloud LLMs to satisfy compliance. Implemented strict role-based access controls at the vector level.",
+                  results: "Automated initial triage routing for 80% of incoming requests, reducing average patient wait time by 45 minutes.",
+                  lessons: "Localized inference is mandatory for strict compliance; optimizing embedding models for medical terminology yielded higher accuracy than scaling the LLM size.",
+                  stack: "Python, FastAPI, Qdrant, React, Local LLMs"
                 },
                 {
-                  title: "National Education Management Platform",
-                  problem: "Legacy infrastructure could not handle concurrent user spikes during enrollment periods, causing system crashes.",
-                  constraints: "Zero data loss requirement, tight migration window, and strict budget limits.",
-                  architecture: "Redesigned the backend using a decoupled FastAPI architecture deployed on scalable GCP infrastructure with read-replicas.",
+                  title: "School / Student Management System",
+                  problem: "Legacy monolithic system crashed during peak enrollment periods due to database locks and inefficient querying.",
+                  constraints: "Zero data loss requirement, seamless migration during the academic year, and limited infrastructure budget.",
+                  architecture: "Migrated to a decoupled microservices architecture using Django and PostgreSQL. Implemented read-replicas and Redis caching.",
                   decisions: "Separated read and write workloads at the database layer to handle the 90/10 read/write split during enrollment spikes.",
-                  results: "Migrated 100% of traffic with zero data loss. Successfully scaled to support 500k+ concurrent users with zero downtime.",
-                  lessons: "Database read-replicas and connection pooling resolved burst scaling more effectively than application-level changes.",
-                  stack: "FastAPI, Next.js, PostgreSQL, GCP"
+                  results: "Successfully handled 300% traffic surges during enrollment with zero downtime. Reduced page load times from 8s to under 800ms.",
+                  lessons: "Database connection pooling and read-replicas resolved burst scaling more effectively than application-level horizontal scaling.",
+                  stack: "Django, PostgreSQL, Redis, React, GCP"
+                },
+                {
+                  title: "LLM Marketing Intelligence Engine",
+                  problem: "Marketing teams spent days manually analyzing fragmented campaign data across multiple platforms to generate insights.",
+                  constraints: "High API rate limits, unpredictable burst traffic, and strict cost controls per query.",
+                  architecture: "Built an orchestration layer using Kubernetes and LangChain to queue, batch, and route data extraction requests to Vertex AI.",
+                  decisions: "Implemented a Redis-backed priority queue to manage rate limits and ensure critical requests bypassed batching delays.",
+                  results: "Processed 500k+ daily data points reliably. Reduced report generation time from 3 days to 15 minutes while optimizing compute costs by 20%.",
+                  lessons: "Token-level observability and request batching are mandatory for managing production LLM costs at scale.",
+                  stack: "Kubernetes, Vertex AI, LangChain, Redis, Python"
                 }
               ].map((sys, i) => (
                 <div key={i} className="group border-t border-white/10 pt-12 pb-12 hover:bg-white/[0.01] transition-all duration-500 relative interactive -mx-8 px-8">
